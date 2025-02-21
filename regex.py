@@ -64,7 +64,11 @@ def main():
     print(m.groups())
 
     p = re.compile(r'(?P<word>\b\w+\b)')
+    m = p.search( '(((( Lots of punctuation )))' )
+    print(m.group('word'))
 
+    m = re.match(r'(?P<first>\w+) (?P<last>\w+)', 'Jane Doe')
+    print(m.groupdict())
 
 if __name__ == "__main__":
     main()
