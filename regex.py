@@ -70,5 +70,27 @@ def main():
     m = re.match(r'(?P<first>\w+) (?P<last>\w+)', 'Jane Doe')
     print(m.groupdict())
 
+    InternalDate = re.compile(r'INTERNALDATE "'
+        r'(?P<day>[ 123][0-9])-(?P<mon>[A-Z][a-z][a-z])-'
+        r'(?P<year>[0-9][0-9][0-9][0-9])'
+        r' (?P<hour>[0-9][0-9]):(?P<min>[0-9][0-9]):(?P<sec>[0-9][0-9])'
+        r' (?P<zonen>[-+])(?P<zoneh>[0-9][0-9])(?P<zonem>[0-9][0-9])'
+        r'"')
+    print(InternalDate)
+
+    p = re.compile(r'\W+')
+    print(p.split('This is a test, short and sweet, of split().'))
+
+    print(p.split('This is a test, short and sweet, of split().', 3))
+
+    p = re.compile(r'\W+')
+    p2 = re.compile(r'(\W+)')
+    print(p.split('This... is a test.'))
+    print(p2.split('This... is a test.'))
+
+    print(p.findall('This... is a test.'))
+    print(p2.findall('This... is a test.'))
+
+
 if __name__ == "__main__":
     main()
