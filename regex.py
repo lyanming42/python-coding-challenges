@@ -88,9 +88,15 @@ def main():
     print(p.split('This... is a test.'))
     print(p2.split('This... is a test.'))
 
-    print(p.findall('This... is a test.'))
-    print(p2.findall('This... is a test.'))
+    p = re.compile('(blue|white|red)')
+    print(p.sub('colour', 'blue socks and red shoes'))
 
+    p = re.compile('(blue|white|red)')
+    print(p.subn('colour', 'blue socks and red shoes'))
 
+    p = re.compile(r'x*')
+    print(p.sub('-', 'abxd'))
+
+    
 if __name__ == "__main__":
     main()
