@@ -97,6 +97,11 @@ def main():
     p = re.compile(r'x*')
     print(p.sub('-', 'abxd'))
 
+    p = re.compile('section{ ( [^}]* ) }', re.VERBOSE)
+    print(p.sub(r'subsection{\1}','section{First} section{second}'))
+
+    p = re.compile('section{ (?P<name> [^}]* ) }', re.VERBOSE)
+    print(p.sub(r'subsection{\1}','section{First}'))
     
 if __name__ == "__main__":
     main()
