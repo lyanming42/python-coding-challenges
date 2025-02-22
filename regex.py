@@ -25,9 +25,7 @@ Matches any alphanumeric character; this is equivalent to the class [a-zA-Z0-9_]
 Matches any non-alphanumeric character; this is equivalent to the class [^a-zA-Z0-9_].
 
 """
-
 """
-
 """
 
 def main():
@@ -102,6 +100,22 @@ def main():
 
     p = re.compile('section{ (?P<name> [^}]* ) }', re.VERBOSE)
     print(p.sub(r'subsection{\1}','section{First}'))
+    print(p.sub(r'subsection{\g<1>}','section{First}'))
+    print(p.sub(r'subsection{\g<name>}','section{First}'))
+
+    s = '<html><head><title>Title</title>'
+    print(re.match('<.*>', s).span())
+
+    print(re.match('<.*?>', s).group())
+
+    pat = re.compile(r"""
+    \s*                 # Skip leading whitespace
+    (?P<header>[^:]+)   # Header name
+    \s* :               # Whitespace, and a colon
+    (?P<value>.*?)      # The header's value -- *? used to
+                        # lose the following trailing whitespace
+    \s*$                # Trailing whitespace to end-of-line
+    """, re.VERBOSE)
     
 if __name__ == "__main__":
     main()
